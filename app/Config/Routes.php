@@ -37,6 +37,13 @@ $routes->group('admin', static function ($routes) {
     $routes->get('item-pemeriksaan-list', 'AdminController::itemPemeriksaanList');
     $routes->get('item-pemeriksaan/create-item', 'AdminController::createItemPemeriksaan');
     $routes->post('item-pemeriksaan/store-item', 'AdminController::storeItemPemeriksaan');
+    $routes->get('item-pemeriksaan/show-item/(:any)', 'AdminController::showItemPemeriksaan/$1');
+    $routes->post('item-pemeriksaan/update-item/(:any)', 'AdminController::updateItemPemeriksaan/$1');
+
+    //routing sub item pemeriksaan page
+    $routes->get('sub-item-pemeriksaan-list/(:any)', 'AdminController::subItemPemeriksaanList/$1');
+    $routes->get('sub-item-pemeriksaan/create-sub-item/(:any)', 'AdminController::createSubItemPemeriksaan/$1');
+    $routes->post('sub-item-pemeriksaan/store-sub-item/(:any)', 'AdminController::storeSubItemPemeriksaan/$1');
 });
 
 $routes->group('pendaftaran', static function ($routes) {
@@ -48,7 +55,12 @@ $routes->group('pendaftaran', static function ($routes) {
     $routes->get('jenis-pemeriksaan', 'PendaftaranController::jenisPemeriksaan');
     $routes->get('jenis-pemeriksaan/(:any)', 'PendaftaranController::subJenisPemeriksaan/$1');
     $routes->get('sub-jenis-pemeriksaan/(:any)', 'PendaftaranController::showSubJenisPemeriksaan/$1');
+    $routes->get('temp-sub/(:any)', 'PendaftaranController::tempPemeriksaan/$1');
+    $routes->get('del-jenis-pemeriksaan/(:any)', 'PendaftaranController::delItemTempPemeriksaan/$1');
     $routes->get('rincian-pemeriksaan', 'PendaftaranController::rincianItemPemeriksaan');
+    $routes->post('store-pemeriksaan', 'PendaftaranController::storePemeriksaan');
+    $routes->get('pendaftar', 'PendaftaranController::indexPendaftar');
+    $routes->get('pendaftar-list', 'PendaftaranController::pemeriksaanList');
 });
 
 $routes->group('sampling', static function ($routes) {

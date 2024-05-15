@@ -13,7 +13,7 @@
             <div class="col d-flex justify-content-center">
             </div>
             <div class="col-4 d-flex justify-content-center">
-                <div class="card text-center p-3 border-3" style="cursor: pointer; border-radius: 20px; width: 200px; color: white; background-color: black;">
+                <div class="card text-center p-3 border-3" style="cursor: pointer; border-radius: 20px; width: 200px; color: white; background-color: black;" onclick="return window.location.href = '<?= base_url() ?>pendaftaran/temp-sub/<?= esc($subItemData)['id'] ?>'">
                     <h3>Rincian</h3>
                 </div>
             </div>

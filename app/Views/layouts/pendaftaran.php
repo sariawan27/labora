@@ -219,7 +219,7 @@ $segment = $uri->getSegment(2);
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="<?= base_url('pendaftaran/pendaftar') ?>" class="nav-link <?= $segment == 'pendaftar' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Data Pendaftar
@@ -344,6 +344,20 @@ $segment = $uri->getSegment(2);
   <script src="<?= base_url(); ?>/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?= base_url(); ?>/dist/js/pages/dashboard.js"></script>
+
+  <!-- DataTables  & Plugins -->
+  <script src="<?= base_url(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/jszip/jszip.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 </body>
 
 </html>
