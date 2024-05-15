@@ -12,21 +12,26 @@ class AuthController extends BaseController
     {
         return view('pages/auth/login');
     }
-    public function pendaftaran() {
+    public function pendaftaran()
+    {
         return view('pages/auth/login');
     }
-    public function sampling() {
+    public function sampling()
+    {
         return view('pages/auth/login');
     }
-    public function pemeriksaan() {
+    public function pemeriksaan()
+    {
         return view('pages/auth/login');
     }
-    public function validasi() {
+    public function validasi()
+    {
         return view('pages/auth/login');
     }
 
-    public function login($param = null) {
-        
+    public function login($param = null)
+    {
+
         $session = session();
 
         $username = $this->request->getPost('username');
@@ -42,30 +47,35 @@ class AuthController extends BaseController
         ])->get()->getResultArray();
 
         if (count($dataUser) == 0) {
-                return redirect('login/'.$param)->with('messageError', 'akun tidak tersedia');
+            return redirect('login/' . $param)->with('messageError', 'akun tidak tersedia');
         } else {
-            if ($param!=null) {
-                
+            if ($param != null) {
+
                 $session->set('user', $dataUser);
                 return redirect($param);
             } else {
-                return redirect('login/'.$param);
+                return redirect('login/' . $param);
             }
         }
-        
+
         // return json_encode($dataUser);
 
     }
 
-    public function session_check() {
+    public function session_check()
+    {
         $session = session();
-        var_dump($session->get('user'));
+        var_dump($session->get('registrasi_pasien'));
     }
 
-    public function logout($param) {
+    public function logout($param)
+    {
         $session = session();
         $session->remove('user');
+        $session->remove('item_pemeriksaan');
+        $session->remove('registrasi_pasien');
+        $session->remove('total_pembayaran');
 
-        return redirect('login/'.$param);
+        return redirect('login/' . $param);
     }
 }
