@@ -320,4 +320,12 @@ class PendaftaranController extends BaseController
 
         return json_encode($output);
     }
+
+    public function showPemeriksaan($id = null)
+    {
+        $pemeriksaanmModel = new PemeriksaanModel();
+        $pemeriksaanData = $pemeriksaanmModel->where('id', $id)->get()->getRowArray();
+
+        return view('pages/layout/pendaftaran/pendaftar/show',  ['pemeriksaanData' => $pemeriksaanData]);
+    }
 }

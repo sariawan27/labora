@@ -44,6 +44,8 @@ $routes->group('admin', static function ($routes) {
     $routes->get('sub-item-pemeriksaan-list/(:any)', 'AdminController::subItemPemeriksaanList/$1');
     $routes->get('sub-item-pemeriksaan/create-sub-item/(:any)', 'AdminController::createSubItemPemeriksaan/$1');
     $routes->post('sub-item-pemeriksaan/store-sub-item/(:any)', 'AdminController::storeSubItemPemeriksaan/$1');
+    $routes->get('sub-item-pemeriksaan/edit-sub-item/(:any)', 'AdminController::editSubItemPemeriksaan/$1');
+    $routes->post('sub-item-pemeriksaan/update-sub-item/(:any)', 'AdminController::updateSubItemPemeriksaan/$1');
 });
 
 $routes->group('pendaftaran', static function ($routes) {
@@ -61,6 +63,7 @@ $routes->group('pendaftaran', static function ($routes) {
     $routes->post('store-pemeriksaan', 'PendaftaranController::storePemeriksaan');
     $routes->get('pendaftar', 'PendaftaranController::indexPendaftar');
     $routes->get('pendaftar-list', 'PendaftaranController::pemeriksaanList');
+    $routes->get('pendaftar/show/(:any)', 'PendaftaranController::showPemeriksaan/$1');
 });
 
 $routes->group('sampling', static function ($routes) {

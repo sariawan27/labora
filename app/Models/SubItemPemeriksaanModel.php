@@ -12,7 +12,7 @@ class SubItemPemeriksaanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'idPemeriksaan', 'nama', 'harga', 'deskripsi'];
+    protected $allowedFields    = ['id', 'idPemeriksaan', 'nama', 'harga', 'picture', 'deskripsi'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
