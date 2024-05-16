@@ -65,6 +65,13 @@ $routes->group('pendaftaran', static function ($routes) {
 
 $routes->group('sampling', static function ($routes) {
     $routes->get('/', 'Home::sampling');
+    $routes->get('laboratorium', 'LaboratoriumController::index');
+    $routes->get('petugas-list', 'LaboratoriumController::petugasList');
+    $routes->post('petugas-delete', 'LaboratoriumController::petugasDelete');
+    $routes->get('laboratorium/add', 'LaboratoriumController::formPetugasAdd');
+    $routes->post('petugas-add', 'LaboratoriumController::petugasAdd');
+    $routes->get('laboratorium/edit', 'LaboratoriumController::formPetugasEdit');
+    $routes->post('petugas-edit', 'LaboratoriumController::petugasEdit');
 });
 
 $routes->group('pemeriksaan', static function ($routes) {

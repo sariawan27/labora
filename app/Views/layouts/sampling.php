@@ -30,6 +30,8 @@ $segment = $uri->getSegment(2);
   <link rel="stylesheet" href="<?= base_url(); ?>/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url(); ?>/plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="<?= base_url(); ?>/dist/css/dataTables.bootstrap4.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -195,8 +197,8 @@ $segment = $uri->getSegment(2);
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+            <li class="nav-item">
+              <a href="#" class="nav-link <?= $segment == '' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -204,7 +206,7 @@ $segment = $uri->getSegment(2);
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="/sampling/laboratorium" class="nav-link <?= $segment == 'laboratorium' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Data Laboratorium
@@ -262,19 +264,19 @@ $segment = $uri->getSegment(2);
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <div class="content-header">
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0">Dashboard</h1>
-            </div><!-- /.col -->
+            </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
               </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div> -->
       </div>
       <!-- /.content-header -->
 
@@ -282,7 +284,7 @@ $segment = $uri->getSegment(2);
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
-          wkwk
+          <!-- wkwk -->
           <?= $this->renderSection('content') ?>
         </div><!-- /.container-fluid -->
       </section>
@@ -339,6 +341,20 @@ $segment = $uri->getSegment(2);
   <script src="<?= base_url(); ?>/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?= base_url(); ?>/dist/js/pages/dashboard.js"></script>
+
+  <!-- DataTables  & Plugins -->
+  <script src="<?= base_url(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/jszip/jszip.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 </body>
 
 </html>
