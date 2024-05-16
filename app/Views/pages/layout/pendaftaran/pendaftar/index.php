@@ -77,7 +77,7 @@
                 {
                     "data": "id", // Tampilkan kolomid_kategori pada table kategori
                     "render": function(data, type, row, meta) {
-                        return '<a href="show/' + data + '">Show</a>';
+                        return '<a href="<?= base_url('pendaftaran/pendaftar/show/') ?>' + data + '">Show</a>';
                     }
                 },
             ]

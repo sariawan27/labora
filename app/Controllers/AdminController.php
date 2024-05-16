@@ -311,7 +311,7 @@ class AdminController extends BaseController
         $subItemPemeriksaanModel = new SubItemPemeriksaanModel();
         $subItemPemeriksaanData = $subItemPemeriksaanModel->where('id', $id)->get()->getRowArray();
 
-        return view('pages/layout/admin/sub-item-pemeriksaan/edit', ['itemPemeriksaanData' => $subItemPemeriksaanData]);
+        return view('pages/layout/admin/sub-item-pemeriksaan/edit', ['subItemPemeriksaanData' => $subItemPemeriksaanData]);
     }
 
     public function updateSubItemPemeriksaan($id = null)
@@ -331,21 +331,21 @@ class AdminController extends BaseController
                     'message' => 'Data gagal diupdate.',
                     'data' => $data
                 ];
-                return redirect('admin/item-pemeriksaan')->with('messageError', 'Gagal mengupdate data!');
+                return redirect()->back()->with('messageError', 'Gagal mengupdate data!');
             }
             $response = [
                 'status' => 201,
                 'message' => 'Data berhasil diupdate.',
                 'data' => $data
             ];
-            return redirect('admin/item-pemeriksaan')->with('success', $response);
+            return redirect()->back()->with('success', $response);
         } catch (Exception $e) {
             $response = [
                 'status' => 400,
                 'message' => 'Data gagal diupdate.',
                 'data' => $data
             ];
-            return redirect('admin/item-pemeriksaan')->with('messageError', 'Gagal mengupdate data!');
+            return redirect()->back()->with('messageError', 'Gagal mengupdate data!');
         }
     }
 }

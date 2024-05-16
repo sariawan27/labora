@@ -49,12 +49,29 @@ class AuthController extends BaseController
         if (count($dataUser) == 0) {
             return redirect('login/' . $param)->with('messageError', 'akun tidak tersedia');
         } else {
-            if ($param != null) {
-
-                $session->set('user', $dataUser);
-                return redirect($param);
+            //checking akun
+            if ($param == 'admin') {
+                if ($dataUser[0]['roleId'] == 1) {
+                    if ($param != null) {
+                        $session->set('user', $dataUser);
+                        return redirect($param);
+                    } else {
+                        return redirect('login/' . $param);
+                    }
+                } else {
+                    return redirect('login/' . $param);
+                }
             } else {
-                return redirect('login/' . $param);
+                if ($dataUser[0]['roleId'] == 4) {
+                    if ($param != null) {
+                        $session->set('user', $dataUser);
+                        return redirect($param);
+                    } else {
+                        return redirect('login/' . $param);
+                    }
+                } else {
+                    return redirect('login/' . $param);
+                }
             }
         }
 
