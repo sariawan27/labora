@@ -14,19 +14,12 @@ class FormPemeriksaanDatatablesModel extends Model
         'nama',
         'satuan',
         'normal',
-        'NomorAntrian',
-        'userIdPendaftar',
-        'metode_pembayaran',
-        'totalPembayaran'
+        'idSubPemeriksaan'
     ];
     protected $column_search = [
-        'status',
-        'tanggalPemeriksaan',
-        'statusSelesai',
-        'NomorAntrian',
-        'userIdPendaftar',
-        'metode_pembayaran',
-        'totalPembayaran'
+        'nama',
+        'satuan',
+        'normal',
     ];
     protected $order = ['id' => 'DESC'];
     protected $request;
@@ -39,7 +32,7 @@ class FormPemeriksaanDatatablesModel extends Model
         $this->db = db_connect();
         $this->request = $request;
         // $this->table = $table;
-        $this->dt = $this->db->table($this->table)->select('t_pemeriksaan.id, t_pemeriksaan.idPasien, t_pemeriksaan.status, t_pemeriksaan.tanggalPemeriksaan, t_pemeriksaan.statusSelesai, t_pemeriksaan.NomorAntrian, t_pemeriksaan.userIdPendaftar, t_pemeriksaan.metode_pembayaran, t_pemeriksaan.totalPembayaran, t_pemeriksaan.updated_at, m_pasien.nomorRekamMedis, m_pasien.namaPasien, m_pasien.jk, m_pasien.tempatLahir, m_pasien.tanggalLahir, m_pasien.email, m_pasien.nomor, m_pasien.alamat, m_pasien.usia')->join('m_pasien', 't_pemeriksaan.idPasien=m_pasien.id', 'left');
+        $this->dt = $this->db->table($this->table)->select('m_formPemeriksaan.id, m_formPemeriksaan.idPemeriksaan, m_formPemeriksaan.idSubPemeriksaan, m_formPemeriksaan.nama, m_formPemeriksaan.satuan, m_formPemeriksaan.normal, m_formPemeriksaan.created_at, m_subPemeriksaan.nama as namaSubPemeriksaan, t_pemeriksaan.idPasien, t_pemeriksaan.status, t_pemeriksaan.tanggalPemeriksaan, t_pemeriksaan.statusSelesai, t_pemeriksaan.NomorAntrian, t_pemeriksaan.userIdPendaftar, t_pemeriksaan.metode_pembayaran, t_pemeriksaan.totalPembayaran, t_pemeriksaan.updated_at, m_pasien.nomorRekamMedis, m_pasien.namaPasien, m_pasien.jk, m_pasien.tempatLahir, m_pasien.tanggalLahir, m_pasien.email, m_pasien.nomor, m_pasien.alamat, m_pasien.usia')->join('t_pemeriksaan', 't_pemeriksaan.id=m_formPemeriksaan.idPemeriksaan')->join('m_subPemeriksaan', 'm_subPemeriksaan.id=m_formPemeriksaan.idSubPemeriksaan')->join('m_pasien', 't_pemeriksaan.idPasien=m_pasien.id', 'left');
     }
 
     private function getDatatablesQuery()

@@ -84,6 +84,13 @@ $routes->group('sampling', static function ($routes) {
 
 $routes->group('pemeriksaan', static function ($routes) {
     $routes->get('/', 'Home::pemeriksaan');
+
+    $routes->get('data-pemeriksaan', 'PemeriksaanController::index');
+    $routes->get('data-pemeriksaan-list', 'PemeriksaanController::dataPemeriksaanList');
+    $routes->get('data-pemeriksaan/show/(:any)/(:any)', 'PemeriksaanController::showPemeriksaan/$1/$2');
+
+    $routes->get('hasil-pemeriksaan', 'PemeriksaanController::indexHasilPemeriksaan');
+    $routes->get('hasil-pemeriksaan-list', 'PemeriksaanController::hasilPemeriksaanList');
 });
 
 $routes->group('validasi', static function ($routes) {
