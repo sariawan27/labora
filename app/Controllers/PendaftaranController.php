@@ -138,6 +138,11 @@ class PendaftaranController extends BaseController
         $session = session();
         $itemSessionData  = $session->get('item_pemeriksaan');
         $itemFiltered = array_filter($itemSessionData, function ($obj, $key) use ($id) {
+            if ($key == $id) {
+                $session = session();
+                $pembayaranSession  = $session->get('total_pembayaran');
+                $session->set('total_pembayaran', $pembayaranSession - $obj['harga']);
+            }
             return $key != $id;
         }, ARRAY_FILTER_USE_BOTH);
         $session->set('item_pemeriksaan', $itemFiltered);

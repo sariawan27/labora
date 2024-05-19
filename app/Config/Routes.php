@@ -75,6 +75,11 @@ $routes->group('sampling', static function ($routes) {
     $routes->post('petugas-add', 'LaboratoriumController::petugasAdd');
     $routes->get('laboratorium/edit', 'LaboratoriumController::formPetugasEdit');
     $routes->post('petugas-edit', 'LaboratoriumController::petugasEdit');
+    $routes->get('pendaftar', 'LaboratoriumController::indexPendaftar');
+    $routes->get('pendaftar-list', 'LaboratoriumController::pemeriksaanList');
+    $routes->get('pendaftar/show/(:any)/(:any)', 'LaboratoriumController::showPemeriksaan/$1/$2');
+    $routes->get('pendaftar/pengambilan-sample/(:any)/(:any)/(:any)', 'LaboratoriumController::showPengambilanSample/$1/$2/$3');
+    $routes->post('pendaftar/add-pengambilan-sample/(:any)', 'LaboratoriumController::addPengambilanSample/$1');
 });
 
 $routes->group('pemeriksaan', static function ($routes) {
