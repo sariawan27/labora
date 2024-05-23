@@ -46,6 +46,10 @@ $routes->group('admin', static function ($routes) {
     $routes->post('sub-item-pemeriksaan/store-sub-item/(:any)', 'AdminController::storeSubItemPemeriksaan/$1');
     $routes->get('sub-item-pemeriksaan/edit-sub-item/(:any)', 'AdminController::editSubItemPemeriksaan/$1');
     $routes->post('sub-item-pemeriksaan/update-sub-item/(:any)', 'AdminController::updateSubItemPemeriksaan/$1');
+
+    $routes->get('pendaftar', 'AdminController::indexPendaftar');
+    $routes->get('pendaftar-list', 'AdminController::pemeriksaanList');
+    $routes->post('pendaftar/update-pembayaran/(:any)', 'AdminController::konfirmasiPembayaran/$1');
 });
 
 $routes->group('pendaftaran', static function ($routes) {
@@ -95,4 +99,7 @@ $routes->group('pemeriksaan', static function ($routes) {
 
 $routes->group('validasi', static function ($routes) {
     $routes->get('/', 'Home::validasi');
+
+    $routes->get('hasil-pemeriksaan', 'ValidasiController::indexHasilPemeriksaan');
+    $routes->get('hasil-pemeriksaan-list', 'ValidasiController::hasilPemeriksaanList');
 });

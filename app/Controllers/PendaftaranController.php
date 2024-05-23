@@ -331,6 +331,24 @@ class PendaftaranController extends BaseController
         $pemeriksaanmModel = new PemeriksaanModel();
         $pemeriksaanData = $pemeriksaanmModel->where('id', $id)->get()->getRowArray();
 
-        return view('pages/layout/pendaftaran/pendaftar/show',  ['pemeriksaanData' => $pemeriksaanData]);
+        $pasienModel = new PasienModel();
+        $pasienData = $pasienModel->where('id', $pemeriksaanData['idPasien'])->get()->getRowArray();
+
+        $itemPemeriksaan = new ItemPemeriksaanModel();
+        $itemPemeriksaanData = $itemPemeriksaan->get()->getResultArray();
+
+        // $rows = ceil(count($itemPemeriksaanData) / 3);
+        $itemPemeriksaanDataChunk = array_chunk($itemPemeriksaanData,  3);
+
+        $arr = [];
+        foreach ($itemPemeriksaanData as $key => $value) {
+            $dataSubPemeriksaan = $pemeriksaanmModel->select('t_pemeriksaan.id, t_pemeriksaan.idPasien, t_pemeriksaan.status, t_pemeriksaan.tanggalPemeriksaan, t_pemeriksaan.statusSelesai, t_pemeriksaan.NomorAntrian, t_pemeriksaan.userIdPendaftar, t_pemeriksaan.metode_pembayaran, t_pemeriksaan.totalPembayaran, t_pemeriksaan.updated_at, t_request.idSubPemeriksaan, m_subPemeriksaan.idPemeriksaan, m_subPemeriksaan.nama, m_subPemeriksaan.harga')->join('t_request', 't_pemeriksaan.id=t_request.idTrPemeriksaan')->join('m_subPemeriksaan', 't_request.idSubPemeriksaan=m_subPemeriksaan.id')->where('t_pemeriksaan.id', $id)->where('t_pemeriksaan.idPasien', $pemeriksaanData['idPasien'])->where('m_subPemeriksaan.idPemeriksaan', $value['id'])->get()->getResultArray();
+
+            array_push($arr, $dataSubPemeriksaan ? $dataSubPemeriksaan : []);
+        }
+
+        $subPemeriksaanDataChunk = array_chunk($arr,  3);
+
+        return view('pages/layout/pendaftaran/pendaftar/show',  ['pemeriksaanData' => $pemeriksaanData, 'pasienData' => $pasienData, 'itemPemeriksaanData' => $itemPemeriksaanDataChunk, 'subPemeriksaanData' => $subPemeriksaanDataChunk]);
     }
 }
