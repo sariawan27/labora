@@ -12,7 +12,7 @@ class FormPemeriksaan extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'idPemeriksaan', 'idSubPemeriksaan', 'satuan', 'normal'];
+    protected $allowedFields    = ['id', 'idPemeriksaan', 'idSubPemeriksaan', 'satuan', 'normal', 'nama'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

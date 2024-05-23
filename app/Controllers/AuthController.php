@@ -61,6 +61,17 @@ class AuthController extends BaseController
                 } else {
                     return redirect('login/' . $param);
                 }
+            } else if ($param == 'validasi') {
+                if ($dataUser[0]['roleId'] == 2) {
+                    if ($param != null) {
+                        $session->set('user', $dataUser);
+                        return redirect($param);
+                    } else {
+                        return redirect('login/' . $param);
+                    }
+                } else {
+                    return redirect('login/' . $param);
+                }
             } else {
                 if ($dataUser[0]['roleId'] == 4) {
                     if ($param != null) {

@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ItemPemeriksaanDatatablesModel;
 use App\Models\ItemPemeriksaanModel;
+use App\Models\PemeriksaanDatatablesModel;
+use App\Models\PemeriksaanModel;
 use App\Models\SubItemPemeriksaanDatatablesModel;
 use App\Models\SubItemPemeriksaanModel;
 use App\Models\UserDatatablesModel;
@@ -346,6 +348,51 @@ class AdminController extends BaseController
                 'data' => $data
             ];
             return redirect()->back()->with('messageError', 'Gagal mengupdate data!');
+        }
+    }
+
+    public function indexPendaftar()
+    {
+        return view('pages/layout/admin/pendaftar/index');
+    }
+    public function pemeriksaanList()
+    {
+        $request = Services::request();
+        $datatable = new PemeriksaanDatatablesModel($request);
+
+        $lists = $datatable->getDatatables();
+        $data = [];
+        $no = $request->getGet('start');
+
+        $output = [
+            'draw' => $request->getGet('draw'),
+            'recordsTotal' => $datatable->countAll(),
+            'recordsFiltered' => $datatable->countFiltered(),
+            'data' => $lists
+        ];
+
+        return json_encode($output);
+    }
+
+    public function konfirmasiPembayaran($id = null)
+    {
+        try {
+            $pemeriksaanModel = new PemeriksaanModel();
+            $dataToUpdate = [
+                'status' => 'Lunas',
+            ];
+            $pemeriksaanModel->update($id, $dataToUpdate);
+            return $this->response->setStatusCode(200)->setJson([
+                "error"     => false,
+                "message"   => "Successfully modify data petugas",
+                "data"      => $dataToUpdate
+            ]);
+        } catch (Exception $e) {
+            return $this->response->setStatusCode(500)->setJson([
+                "error"     => true,
+                "message"   => $e->getMessage(),
+                "data"      => []
+            ]);
         }
     }
 }

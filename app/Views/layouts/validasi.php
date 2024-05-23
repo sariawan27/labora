@@ -103,8 +103,8 @@ $segment = $uri->getSegment(2);
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -112,28 +112,10 @@ $segment = $uri->getSegment(2);
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+              <a href="<?= base_url('validasi/hasil-pemeriksaan') ?>" class="nav-link <?= $segment == 'hasil-pemeriksaan' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  Registrasi
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Jenis Pemeriksaan
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Data Pendaftar
+                  Hasil Pemeriksaan
                   <span class="right badge badge-danger">New</span>
                 </p>
               </a>
@@ -144,14 +126,14 @@ $segment = $uri->getSegment(2);
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Settings
                 </p>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a href="<?= base_url('process-logout') ?>/<?= $uri->getSegment(1) ?>" class="nav-link">
                 <i class="nav-icon fas fa-door-open"></i>
@@ -160,14 +142,14 @@ $segment = $uri->getSegment(2);
                 </p>
               </a>
             </li>
-            <li class="nav-item mt-3">
+            <!-- <li class="nav-item mt-3">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Help!
                 </p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -180,17 +162,6 @@ $segment = $uri->getSegment(2);
       <!-- Content Header (Page header) -->
       <div class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
@@ -199,7 +170,6 @@ $segment = $uri->getSegment(2);
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
-          wkwk
           <?= $this->renderSection('content') ?>
         </div><!-- /.container-fluid -->
       </section>
@@ -256,6 +226,20 @@ $segment = $uri->getSegment(2);
   <script src="<?= base_url(); ?>/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?= base_url(); ?>/dist/js/pages/dashboard.js"></script>
+
+  <!-- DataTables  & Plugins -->
+  <script src="<?= base_url(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/jszip/jszip.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 </body>
 
 </html>

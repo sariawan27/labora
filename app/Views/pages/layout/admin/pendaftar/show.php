@@ -22,51 +22,86 @@
                 <tbody>
                     <tr>
                         <th style="padding: 15px; text-align: left;">No. RM</th>
-                        <td style="padding: 15px;"><?= esc($pasienData['nomorRekamMedis']) ?></td>
-                        <th style="padding: 15px; text-align: left;">Tanggal</th>
-                        <td style="padding: 15px;"><?= esc($pemeriksaanData['tanggalPemeriksaan']) ?></td>
+                        <td style="padding: 15px;">P0000001</td>
+                        <th style="padding: 15px; text-align: left;">Tanggal / Jam</th>
+                        <td style="padding: 15px;">16/05/2024 / 10:46:00</td>
                     </tr>
                     <tr>
                         <th style="padding: 15px; text-align: left;">Nama Pasien</th>
-                        <td style="padding: 15px;"><?= esc($pasienData['namaPasien']) ?></td>
+                        <td style="padding: 15px;">Sapa Namane</td>
                         <th style="padding: 15px; text-align: left;">Dokter</th>
-                        <td style="padding: 15px;">.....</td>
+                        <td style="padding: 15px;">dr. Jarjit</td>
                     </tr>
                     <tr>
                         <th style="padding: 15px; text-align: left;">Umur</th>
-                        <td style="padding: 15px;"><?= esc($pasienData['usia']) ?></td>
+                        <td style="padding: 15px;">23 Tahun, 8 Bulan, 8 Hari</td>
                         <th style="padding: 15px; text-align: left;">Unit</th>
-                        <td style="padding: 15px;">Poli .....</td>
+                        <td style="padding: 15px;">Poli Umum</td>
                     </tr>
                     <tr>
                         <th style="padding: 15px; text-align: left;">Alamat</th>
-                        <td style="padding: 15px;"><?= esc($pasienData['alamat']) ?></td>
+                        <td style="padding: 15px;">Jalan Ir. Juanda No 117, Cilacap Tengah, Cilacap, Jawa Tengah</td>
                         <th style="padding: 15px; text-align: left;">Diagnosa</th>
-                        <td style="padding: 15px;">.....</td>
+                        <td style="padding: 15px;">Hamil</td>
                     </tr>
                 </tbody>
             </table>
             <table border="1" style="width: 100%; margin-bottom: 1rem;">
-                <?php foreach (esc($itemPemeriksaanData) as $key => $value) { ?>
-                    <thead>
-                        <tr>
-                            <?php foreach (($value) as $value1) { ?>
-                                <th style="padding: 15px; text-align: center;"><?= $value1['namaPemeriksaan'] ?></th>
-                            <?php } ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php foreach ((esc($subPemeriksaanData)[$key]) as $value2) { ?>
-                                <td style="padding: 15px; vertical-align: top;">
-                                    <?php foreach (($value2) as $value3) { ?>
-                                        <p style="margin-bottom: 0;"><?= $value3['nama'] ?></p>
-                                    <?php } ?>
-                                </td>
-                            <?php } ?>
-                        </tr>
-                    </tbody>
-                <?php } ?>
+                <thead>
+                    <tr>
+                        <th style="padding: 15px; text-align: center;">HEMATOLOGI</th>
+                        <th style="padding: 15px; text-align: center;">KIMIA DARAH</th>
+                        <th style="padding: 15px; text-align: center;">URINE</th>
+                        <th style="padding: 15px; text-align: center;">SEROLOGI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">HB (HEMOGLOBIN)</p>
+                            <p style="margin-bottom: 0;">HB (RUJUKAN)</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">ALBUMIN</p>
+                            <p style="margin-bottom: 0;">ALT (SGPT)</p>
+                            <p style="margin-bottom: 0;">ASAM URAT</p>
+                            <p style="margin-bottom: 0;">AST (SGOT)</p>
+                            <p style="margin-bottom: 0;">BILIRUBIN DIREK</p>
+                            <p style="margin-bottom: 0;">BILIRUBIN TOTAL</p>
+                            <p style="margin-bottom: 0;">GAMMA GT</p>
+                            <p style="margin-bottom: 0;">GLOBULIN</p>
+                            <p style="margin-bottom: 0;">GLUKOSA 2JAM PP/SEWAKTU</p>
+                            <p style="margin-bottom: 0;">GLUKOSA PUASA</p>
+                            <p style="margin-bottom: 0;">HDL</p>
+                            <p style="margin-bottom: 0;">KOLESTROL TOTAL</p>
+                            <p style="margin-bottom: 0;">KREATININ</p>
+                            <p style="margin-bottom: 0;">LDL</p>
+                            <p style="margin-bottom: 0;">TRIGLISERID</p>
+                            <p style="margin-bottom: 0;">UREUM/UREA</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">TES KEHAMILAN</p>
+                            <p style="margin-bottom: 0;">URINE RUTIN</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">IGG RUBELLA</p>
+                            <p style="margin-bottom: 0;">IGG TOXOPLASMA</p>
+                            <p style="margin-bottom: 0;">IGM RUBELLA</p>
+                            <p style="margin-bottom: 0;">IGM TOXOPLASMA</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="padding: 15px; text-align: center;">FESES</th>
+                        <th style="padding: 15px; text-align: center;">LAIN-LAIN</th>
+                        <th style="padding: 15px; text-align: center;" rowspan="2"></th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 15px;">
+                            <p style="margin-bottom: 0;">AMOEBA</p>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
             <p style="margin-bottom: 1rem; text-align: right;">Printed : 16/05/2024 10:46:32</p>
             <table border="1" style="width: 100%; margin-bottom: 1rem;">
