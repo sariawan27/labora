@@ -8,7 +8,8 @@ $segment = $uri->getSegment(2);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Labora | Validasi</title>
+  <link rel="icon" type="image/x-icon" href="https://media-public.canva.com/Yu9FE/MAFmV5Yu9FE/1/t.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -116,7 +117,6 @@ $segment = $uri->getSegment(2);
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Hasil Pemeriksaan
-                  <span class="right badge badge-danger">New</span>
                 </p>
               </a>
             </li>
@@ -177,11 +177,10 @@ $segment = $uri->getSegment(2);
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
-      </div>
+      <strong>Copyright &copy; <span id="year"></span>. All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+          <b>V.1.0</b>
+        </div>
     </footer>
 
     <!-- Control Sidebar -->
@@ -191,6 +190,10 @@ $segment = $uri->getSegment(2);
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
 
   <!-- jQuery -->
   <script src="<?= base_url(); ?>/plugins/jquery/jquery.min.js"></script>
