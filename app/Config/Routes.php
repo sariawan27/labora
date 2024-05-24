@@ -95,6 +95,7 @@ $routes->group('pemeriksaan', static function ($routes) {
 
     $routes->get('hasil-pemeriksaan', 'PemeriksaanController::indexHasilPemeriksaan');
     $routes->get('hasil-pemeriksaan-list', 'PemeriksaanController::hasilPemeriksaanList');
+    $routes->get('hasil-pemeriksaan/hasil/(:any)/(:any)', 'PemeriksaanController::showHasilPemeriksaan/$1');
 });
 
 $routes->group('validasi', static function ($routes) {
