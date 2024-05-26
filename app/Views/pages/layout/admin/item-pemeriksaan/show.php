@@ -35,6 +35,7 @@ $segment = $uri->getSegment(4);
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <a href="<?= base_url('admin/item-pemeriksaan') ?>" type="button" class="btn btn-secondary">Cancel</a>
                                 <button type="submit" id="atlmSubmit" name="atlm-submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>

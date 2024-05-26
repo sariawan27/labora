@@ -152,13 +152,13 @@
                             <p style="margin-bottom: 0;">${element.namaSubPemeriksaan}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;">${element.satuan}</p>
-                        </td>
-                        <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;"></p>
+                            <p style="margin-bottom: 0;">${element?.satuanAcuan ? element?.satuanAcuan : ''}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
                             <p style="margin-bottom: 0;">${element.normal}</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">${element?.nilaiAcuan ? element?.nilaiAcuan : ''}</p>
                         </td>
                     `
                     html += `</tr>`

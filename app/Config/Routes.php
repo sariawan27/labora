@@ -96,10 +96,13 @@ $routes->group('pemeriksaan', static function ($routes) {
     $routes->get('data-pemeriksaan', 'PemeriksaanController::index');
     $routes->get('data-pemeriksaan-list', 'PemeriksaanController::dataPemeriksaanList');
     $routes->get('data-pemeriksaan/show/(:any)/(:any)', 'PemeriksaanController::showPemeriksaan/$1/$2');
+    $routes->get('data-pemeriksaan/periksa/(:any)/(:any)/(:any)', 'PemeriksaanController::showPengambilanSample/$1/$2/$3');
+    $routes->post('data-pemeriksaan/add-pengambilan-sample/(:any)', 'PemeriksaanController::addPengambilanSample/$1');
 
     $routes->get('hasil-pemeriksaan', 'PemeriksaanController::indexHasilPemeriksaan');
     $routes->get('hasil-pemeriksaan-list', 'PemeriksaanController::hasilPemeriksaanList');
     $routes->get('hasil-pemeriksaan/hasil/(:any)/(:any)', 'PemeriksaanController::showHasilPemeriksaan/$1/$2');
+    $routes->get('hasil-pemeriksaan/show/(:any)/(:any)', 'PemeriksaanController::detailPemeriksaan/$1/$2');
 
     $routes->get('laboratorium', 'PemeriksaanController::indexPetugas');
     $routes->get('petugas-list', 'PemeriksaanController::petugasList');
@@ -108,6 +111,10 @@ $routes->group('pemeriksaan', static function ($routes) {
     $routes->post('petugas-add', 'PemeriksaanController::petugasAdd');
     $routes->get('laboratorium/edit', 'PemeriksaanController::formPetugasEdit');
     $routes->post('petugas-edit', 'PemeriksaanController::petugasEdit');
+
+    $routes->get('data-sampling', 'PemeriksaanController::indexSampling');
+    $routes->get('data-sampling/show/(:any)', 'PemeriksaanController::showSampling/$1');
+    $routes->post('data-sampling/add-sample/(:any)', 'PemeriksaanController::addSample/$1');
 });
 
 $routes->group('validasi', static function ($routes) {

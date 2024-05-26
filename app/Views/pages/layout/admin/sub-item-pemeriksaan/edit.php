@@ -35,6 +35,14 @@ $segment = $uri->getSegment(4);
                                                 <input name="picture" id="picture" class="form-control" type="text" placeholder="Picture" value="<?= esc($subItemPemeriksaanData)['picture'] ?>">
                                             </div>
                                             <div class="form-group mb-2">
+                                                <label class="control-label">Nilai Normal</label>
+                                                <textarea name="nilai" id="nilai" class="form-control" type="text" placeholder="Nilai Normal"><?= esc($subItemPemeriksaanData)['normal'] ?></textarea>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label class="control-label">Satuan</label>
+                                                <input name="satuan" id="satuan" class="form-control" type="text" placeholder="Satuan" value="<?= esc($subItemPemeriksaanData)['satuan'] ?>">
+                                            </div>
+                                            <div class="form-group mb-2">
                                                 <label class="control-label">Deskripsi</label>
                                                 <textarea name="deskripsi" id="depan" class="form-control" type="text" placeholder="Deskripsi"><?= esc($subItemPemeriksaanData)['deskripsi'] ?></textarea>
                                             </div>
@@ -43,6 +51,7 @@ $segment = $uri->getSegment(4);
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <a href="<?= base_url('admin/item-pemeriksaan/show-item') ?>/<?= esc($subItemPemeriksaanData)['idPemeriksaan'] ?>" type="button" class="btn btn-secondary">Cancel</a>
                                 <button type="submit" id="atlmSubmit" name="atlm-submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>

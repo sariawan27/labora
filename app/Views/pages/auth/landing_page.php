@@ -49,7 +49,7 @@
                 <div class="col-12 d-flex flex-column align-items-center">
                     <a href="<?= base_url() ?>login/admin" class="btn btn-outline-warning button-landing" style="width: 350px;">ADMIN</a>
                     <a href="<?= base_url() ?>login/pendaftaran" class="btn btn-outline-warning button-landing" style="width: 350px; margin-top: 1rem;">PENDAFTARAN</a>
-                    <a href="<?= base_url() ?>login/sampling" class="btn btn-outline-warning button-landing" style="width: 350px; margin-top: 1rem;">SAMPLING</a>
+                    <!-- <a href="<?= base_url() ?>login/sampling" class="btn btn-outline-warning button-landing" style="width: 350px; margin-top: 1rem;">SAMPLING</a> -->
                     <a href="<?= base_url() ?>login/pemeriksaan" class="btn btn-outline-warning button-landing" style="width: 350px; margin-top: 1rem;">PEMERIKSAAN</a>
                     <a href="<?= base_url() ?>login/validasi" class="btn btn-outline-warning button-landing" style="width: 350px; margin-top: 1rem;">VALIDASI</a>
                 </div>
