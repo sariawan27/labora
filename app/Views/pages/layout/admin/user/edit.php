@@ -43,7 +43,6 @@ $segment = $uri->getSegment(4);
                                                 <select class="form-control" name="role" id="role">
                                                     <option value="1" <?= esc($userData)['roleId'] == 1 ? "selected" : "" ?>>Admin</option>
                                                     <option value="2" <?= esc($userData)['roleId'] == 2 ? "selected" : "" ?>>Validator</option>
-                                                    <option value="3" <?= esc($userData)['roleId'] == 3 ? "selected" : "" ?>>Pasien</option>
                                                     <option value="4" <?= esc($userData)['roleId'] == 4 ? "selected" : "" ?>>ATLM</option>
                                                 </select>
                                             </div>

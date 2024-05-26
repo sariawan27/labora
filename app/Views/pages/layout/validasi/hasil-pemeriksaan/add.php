@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="/sampling/laboratorium" type="button" class="btn btn-secondary">Cancel</a>
+                                <a href="/pemeriksaan/laboratorium" type="button" class="btn btn-secondary">Cancel</a>
                                 <button type="button" id="atlmSubmit" name="atlm-submit" class="btn btn-primary" onclick="doSubmit()">Simpan</button>
                             </div>
                         </form>
@@ -74,7 +74,7 @@
             }).then((r) => {
                 if (r.isConfirmed) {
                     $.ajax({
-                        url: "<?php echo site_url('sampling/petugas-add') ?>",
+                        url: "<?php echo site_url('pemeriksaan/petugas-add') ?>",
                         data: data,
                         type: 'POST',
                         success: function(response) {
@@ -90,7 +90,7 @@
                                 title: "Success",
                                 text: response?.message ?? ""
                             }).then((res) => {
-                                window.location = "<?php echo site_url('/sampling/laboratorium') ?>"
+                                window.location = "<?php echo site_url('/pemeriksaan/laboratorium') ?>"
                             })
                         },
                         error: function(xhr, status, error) {

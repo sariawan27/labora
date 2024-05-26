@@ -45,6 +45,7 @@ $segment = $uri->getSegment(4);
                         </thead>
                         <tbody id="tbody-hasil">
                             <?php foreach (esc($pemeriksaanData) as $key => $value) { ?>
+                            <tr>
                                 <td style="padding: 15px; vertical-align: top;">
                                     <p style="margin-bottom: 0;"><?= $key + 1 ?></p>
                                 </td>
@@ -60,6 +61,7 @@ $segment = $uri->getSegment(4);
                                 <td style="padding: 15px; vertical-align: top; text-align: center;">
                                     <p style="margin-bottom: 0;"><?= $value['normal'] ?></p>
                                 </td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>

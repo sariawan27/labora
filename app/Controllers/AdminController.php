@@ -386,7 +386,7 @@ class AdminController extends BaseController
             $pemeriksaanModel->update($id, $dataToUpdate);
             return $this->response->setStatusCode(200)->setJson([
                 "error"     => false,
-                "message"   => "Successfully modify data petugas",
+                "message"   => "Successfully modify update data",
                 "data"      => $dataToUpdate
             ]);
         } catch (Exception $e) {

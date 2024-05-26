@@ -13,7 +13,7 @@
             <div class="icon">
                 <i class="ion ion-android-people"></i>
             </div>
-            <a href="<?= base_url('admin/pendaftar') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?= base_url('pendaftaran/pendaftar') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
@@ -27,7 +27,7 @@
             <div class="icon">
                 <i class="ion ion-ios-person"></i>
             </div>
-            <a href="<?= base_url('admin/users') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
@@ -41,7 +41,7 @@
             <div class="icon">
                 <i class="ion ion-clipboard"></i>
             </div>
-            <a href="<?= base_url('admin/item-pemeriksaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
@@ -55,7 +55,7 @@
             <div class="icon">
                 <i class="ion ion-ios-pulse-strong"></i>
             </div>
-            <a href="<?= base_url('admin/item-pemeriksaan') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 </div>
