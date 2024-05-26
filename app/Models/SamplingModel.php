@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SubItemPemeriksaanModel extends Model
+class SamplingModel extends Model
 {
-    protected $table            = 'm_subPemeriksaan';
+    protected $table            = 't_sampling';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'idPemeriksaan', 'nama', 'harga', 'picture', 'deskripsi', 'normal', 'satuan'];
+    protected $allowedFields    = ['id', 'idPemeriksaan', 'keterangan'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

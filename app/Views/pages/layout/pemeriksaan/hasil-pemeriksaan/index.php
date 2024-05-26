@@ -15,7 +15,7 @@
                             <th>No</th>
                             <th>Nama Pasien</th>
                             <th>No. RM</th>
-                            <th>Status Pembayaran</th>
+                            <!-- <th>Status Pembayaran</th> -->
                             <th>Status Pemeriksaan</th>
                             <th>Action</th>
                         </tr>
@@ -112,17 +112,13 @@
                     name: 'nomorRekamMedis'
                 },
                 {
-                    data: 'status',
-                    name: 'status'
-                },
-                {
                     data: 'statusSelesai',
                     name: 'statusSelesai'
                 },
                 {
                     "data": "id", // Tampilkan kolomid_kategori pada table kategori
                     "render": function(data, type, row, meta) {
-                        return '<a onclick="getData(' + data + ',' + row.idPasien + ')">Unduh</a>';
+                        return '<a href="<?= base_url('pemeriksaan/hasil-pemeriksaan/show/') ?>' + data + '/' + row.idPasien + '">Show</a>  ' + '<a onclick="getData(' + data + ',' + row.idPasien + ')">Unduh</a>';
                     }
                 },
             ]
@@ -153,13 +149,13 @@
                             <p style="margin-bottom: 0;">${element.namaSubPemeriksaan}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;">${element.satuan}</p>
-                        </td>
-                        <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;"></p>
+                            <p style="margin-bottom: 0;">${element?.satuanAcuan ? element?.satuanAcuan : ''}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
                             <p style="margin-bottom: 0;">${element.normal}</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">${element?.nilaiAcuan ? element?.nilaiAcuan : ''}</p>
                         </td>
                     `
                     html += `</tr>`

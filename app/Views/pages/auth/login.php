@@ -87,6 +87,9 @@ $segment = $uri->getSegment(2);
       </div>
       <div class="row" style="height: 60%; margin-top: 3rem;">
         <div class="col-12 d-flex flex-column align-items-center">
+          <div>
+            <h4 class="weight-text">LOGIN <?= strtoupper($segment) ?></h4>
+          </div>
           <form action="<?= base_url('login/process-login/' . $segment) ?>" method="post">
             <div class="form-group" style="width: 350px;">
               <input type="text" name="username" class="form-control input-login" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -96,7 +99,7 @@ $segment = $uri->getSegment(2);
             </div>
             <button type="submit" class="btn" style="width: 350px; background-color: rgba(233, 151, 222)">Submit</button>
             <div class="form-group">
-            <button type="button" class="btn" style="width: 350px; background-color: #e6eaee; margin-top:0.3rem" onclick="return location.href='<?= base_url(); ?>landing'">Kembali</button>
+              <button type="button" class="btn" style="width: 350px; background-color: #e6eaee; margin-top:0.3rem" onclick="return location.href='<?= base_url(); ?>landing'">Kembali</button>
             </div>
           </form>
         </div>

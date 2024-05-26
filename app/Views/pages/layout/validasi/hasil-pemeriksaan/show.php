@@ -45,22 +45,22 @@ $segment = $uri->getSegment(4);
                         </thead>
                         <tbody id="tbody-hasil">
                             <?php foreach (esc($pemeriksaanData) as $key => $value) { ?>
-                            <tr>
-                                <td style="padding: 15px; vertical-align: top;">
-                                    <p style="margin-bottom: 0;"><?= $key + 1 ?></p>
-                                </td>
-                                <td style="padding: 15px; vertical-align: top;">
-                                    <p style="margin-bottom: 0;"><?= $value['namaSubPemeriksaan'] ?></p>
-                                </td>
-                                <td style="padding: 15px; vertical-align: top; text-align: center;">
-                                    <p style="margin-bottom: 0;"><?= $value['satuan'] ?></p>
-                                </td>
-                                <td style="padding: 15px; vertical-align: top;">
-                                    <p style="margin-bottom: 0;"></p>
-                                </td>
-                                <td style="padding: 15px; vertical-align: top; text-align: center;">
-                                    <p style="margin-bottom: 0;"><?= $value['normal'] ?></p>
-                                </td>
+                                <tr>
+                                    <td style="padding: 15px; vertical-align: top;">
+                                        <p style="margin-bottom: 0;"><?= $key + 1 ?></p>
+                                    </td>
+                                    <td style="padding: 15px; vertical-align: top;">
+                                        <p style="margin-bottom: 0;"><?= $value['namaSubPemeriksaan'] ?></p>
+                                    </td>
+                                    <td style="padding: 15px; vertical-align: top; text-align: center;">
+                                        <p style="margin-bottom: 0;"><?= $value['satuan'] ?></p>
+                                    </td>
+                                    <td style="padding: 15px; vertical-align: top;">
+                                        <p style="margin-bottom: 0;"></p>
+                                    </td>
+                                    <td style="padding: 15px; vertical-align: top; text-align: center;">
+                                        <p style="margin-bottom: 0;"><?= $value['normal'] ?></p>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -115,13 +115,13 @@ $segment = $uri->getSegment(4);
                             <p style="margin-bottom: 0;">${element.namaSubPemeriksaan}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;">${element.satuan}</p>
-                        </td>
-                        <td style="padding: 15px; vertical-align: top;">
-                            <p style="margin-bottom: 0;"></p>
+                            <p style="margin-bottom: 0;">${element?.satuanAcuan ? element?.satuanAcuan : ''}</p>
                         </td>
                         <td style="padding: 15px; vertical-align: top;">
                             <p style="margin-bottom: 0;">${element.normal}</p>
+                        </td>
+                        <td style="padding: 15px; vertical-align: top;">
+                            <p style="margin-bottom: 0;">${element?.nilaiAcuan ? element?.nilaiAcuan : ''}</p>
                         </td>
                     `
                     html += `</tr>`

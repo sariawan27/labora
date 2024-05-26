@@ -7,6 +7,36 @@ $segment = $uri->getSegment(4);
 ?>
 <div class="row">
     <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Item Sample</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <table id="user-table" class="table table-striped table-bordered table-hover barang-table" style="width: 100%">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach (esc($samplingData) as $key => $value) { ?>
+                                    <tr>
+                                        <td><?= $key + 1 ?></td>
+                                        <td><?= $value['keterangan'] ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
         <div class="card">
             <div class="card-header border-bottom">
                 <h4 class="card-title">Form Pemeriksaan</h4>
@@ -18,22 +48,11 @@ $segment = $uri->getSegment(4);
                             <div class="modal-body">
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <input type="hidden" name="idatlm" id="idatlm">
                                             <div class="form-group mb-2">
-                                                <label class="control-label">Item</label>
-                                                <input name="idSubPemeriksaan" id="idSubPemeriksaan" class="form-control" style="display: none;" type="text" placeholder="Nama Item" value="<?= esc($pemeriksaanData['idSubPemeriksaan']) ?>">
-                                                <input name="item" id="item" class="form-control" type="text" placeholder="Nama Item" value="<?= esc($pemeriksaanData['nama']) ?>">
-                                            </div>
-                                            <div class="form-group mb-2">
-                                                <label class="control-label">Satuan</label>
-                                                <input name="satuan" id="satuan" class="form-control" type="text" placeholder="Satuan">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-2">
-                                                <label class="control-label">Nilai</label>
-                                                <textarea name="nilai" id="nilai" class="form-control" type="text" placeholder="Nilai"></textarea>
+                                                <label class="control-label">Keterangan</label>
+                                                <textarea name="keterangan" id="keterangan" class="form-control" type="text" placeholder="Keterangan"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -54,28 +73,22 @@ $segment = $uri->getSegment(4);
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const doSubmit = () => {
-        let idSubPemeriksaan = $('#idSubPemeriksaan').val()
-        let item = $('#item').val()
-        let satuan = $('#satuan').val()
-        let nilai = $('#nilai').val()
+        let keterangan = $('#keterangan').val()
 
-        if (idSubPemeriksaan && item && satuan && nilai) {
+        if (keterangan) {
             let data = {
-                "idSubPemeriksaan": idSubPemeriksaan,
-                "item": item,
-                "satuan": satuan,
-                "nilai": nilai,
+                "keterangan": keterangan,
             }
 
             Swal.fire({
                 icon: 'question',
                 title: "Apakah anda yakin?",
-                text: "Anda akan menambahkan data pemeriksaan!",
+                text: "Anda akan menambahkan data sample!",
                 showCancelButton: true,
             }).then((r) => {
                 if (r.isConfirmed) {
                     $.ajax({
-                        url: "<?php echo site_url('pemeriksaan/data-pemeriksaan/add-pengambilan-sample') ?>/<?= $segment ?>",
+                        url: "<?php echo site_url('pemeriksaan/data-sampling/add-sample') ?>/<?= $segment ?>",
                         data: data,
                         type: 'POST',
                         success: function(response) {
@@ -91,7 +104,7 @@ $segment = $uri->getSegment(4);
                                 title: "Success",
                                 text: response?.message ?? ""
                             }).then((res) => {
-                                window.location = "<?php echo site_url('/pemeriksaan/data-pemeriksaan/show') ?>/<?= $uri->getSegment(4) ?>/<?= $uri->getSegment(5) ?>"
+                                window.location = "<?php echo site_url('/pemeriksaan/data-sampling/show') ?>/<?= $uri->getSegment(4) ?>"
                             })
                         },
                         error: function(xhr, status, error) {

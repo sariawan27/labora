@@ -284,6 +284,8 @@ class AdminController extends BaseController
                 'harga' => $this->request->getPost('harga'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'picture' => $this->request->getPost('picture'),
+                'satuan' => $this->request->getVar('satuan'),
+                'normal' => $this->request->getVar('nilai'),
             ];
 
             if (!$subItemModel->insert($data)) {
@@ -327,6 +329,8 @@ class AdminController extends BaseController
                 'harga' => $this->request->getPost('harga'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'picture' => $this->request->getPost('picture'),
+                'satuan' => $this->request->getVar('satuan'),
+                'normal' => $this->request->getVar('nilai'),
             ];
 
             if (!$subItemModel->update($id, $data)) {

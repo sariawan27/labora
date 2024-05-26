@@ -119,6 +119,14 @@ $segment = $uri->getSegment(2);
               </a>
             </li>
             <li class="nav-item">
+              <a href="<?= base_url('pemeriksaan/data-sampling') ?>" class="nav-link <?= $segment == 'data-sampling' ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-vial"></i>
+                <p>
+                  Data Sampling
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="<?= base_url('pemeriksaan/data-pemeriksaan') ?>" class="nav-link <?= $segment == 'data-pemeriksaan' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-clipboard-list"></i>
                 <p>
