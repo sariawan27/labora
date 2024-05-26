@@ -71,6 +71,7 @@ class AdminController extends BaseController
                 'namaBelakang' => $this->request->getPost('belakang'),
                 'email' => $this->request->getPost('email'),
                 'nomor' => $this->request->getPost('nomor'),
+                'username' => $this->request->getPost('username'),
                 'password' => $this->request->getPost('password')
             ];
 
@@ -116,6 +117,7 @@ class AdminController extends BaseController
                 'namaBelakang' => $this->request->getPost('belakang'),
                 'email' => $this->request->getPost('email'),
                 'nomor' => $this->request->getPost('nomor'),
+                'username' => $this->request->getPost('username'),
                 'password' => $this->request->getPost('password')
             ];
 

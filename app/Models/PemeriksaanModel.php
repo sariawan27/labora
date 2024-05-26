@@ -21,7 +21,9 @@ class PemeriksaanModel extends Model
         'NomorAntrian',
         'userIdPendaftar',
         'metode_pembayaran',
-        'totalPembayaran'
+        'totalPembayaran',
+        'updated_at',
+        'isRead'
     ];
 
     protected bool $allowEmptyInserts = false;

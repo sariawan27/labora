@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/landing', 'Home::landing');
+$routes->get('/notification', 'Home::notification');
 
 $routes->get('session-check', 'AuthController::session_check');
 
@@ -95,7 +96,7 @@ $routes->group('pemeriksaan', static function ($routes) {
 
     $routes->get('hasil-pemeriksaan', 'PemeriksaanController::indexHasilPemeriksaan');
     $routes->get('hasil-pemeriksaan-list', 'PemeriksaanController::hasilPemeriksaanList');
-    $routes->get('hasil-pemeriksaan/hasil/(:any)/(:any)', 'PemeriksaanController::showHasilPemeriksaan/$1');
+    $routes->get('hasil-pemeriksaan/hasil/(:any)/(:any)', 'PemeriksaanController::showHasilPemeriksaan/$1/$2');
 });
 
 $routes->group('validasi', static function ($routes) {
@@ -103,4 +104,6 @@ $routes->group('validasi', static function ($routes) {
 
     $routes->get('hasil-pemeriksaan', 'ValidasiController::indexHasilPemeriksaan');
     $routes->get('hasil-pemeriksaan-list', 'ValidasiController::hasilPemeriksaanList');
+    $routes->get('hasil-pemeriksaan/show/(:any)/(:any)', 'ValidasiController::showPemeriksaan/$1/$2');
+    $routes->get('hasil-pemeriksaan/process-validation/(:any)/(:any)', 'ValidasiController::validasiPemeriksaan/$1/$2');
 });

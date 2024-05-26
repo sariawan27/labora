@@ -78,27 +78,25 @@ $segment = $uri->getSegment(2);
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
+            <span class="badge badge-warning navbar-badge" id="notif-icon-total">0</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <span class="dropdown-item dropdown-header" id="notif-header">0 Notifications</span>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
+            <div id="item-notif">
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+            </div>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            <a href="<?= base_url('pendaftaran/pendaftar') ?>" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
       </ul>
@@ -123,7 +121,7 @@ $segment = $uri->getSegment(2);
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?= base_url('pendaftaran') ?>" class="nav-link <?= $segment == '' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -132,7 +130,7 @@ $segment = $uri->getSegment(2);
             </li>
             <li class="nav-item">
               <a href="<?= base_url('pendaftaran/registrasi') ?>" class="nav-link <?= $segment == 'registrasi' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-pencil-alt"></i>
                 <p>
                   Registrasi
                 </p>
@@ -140,7 +138,7 @@ $segment = $uri->getSegment(2);
             </li>
             <li class="nav-item">
               <a href="<?= base_url('pendaftaran/jenis-pemeriksaan') ?>" class="nav-link <?= $segment == 'jenis-pemeriksaan' || $segment == 'sub-jenis-pemeriksaan' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-stethoscope"></i>
                 <p>
                   Jenis Pemeriksaan
                 </p>
@@ -148,7 +146,7 @@ $segment = $uri->getSegment(2);
             </li>
             <li class="nav-item">
               <a href="<?= base_url('pendaftaran/pendaftar') ?>" class="nav-link <?= $segment == 'pendaftar' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-id-card"></i>
                 <p>
                   Data Pendaftar
                 </p>
@@ -288,6 +286,48 @@ $segment = $uri->getSegment(2);
   <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="<?= base_url(); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <!-- script tambahan -->
+  <script>
+    $.ajax({
+      url: "<?php echo base_url('notification') ?>",
+      type: 'GET',
+      success: function(response) {
+        console.log(JSON.parse(response)?.unreadNotif)
+        $('#notif-icon-total').text(JSON.parse(response)?.unreadNotif?.length ? JSON.parse(response)?.unreadNotif?.length : 0)
+        $('#notif-header').text(JSON.parse(response)?.unreadNotif?.length ? (JSON.parse(response)?.unreadNotif?.length + " Notifications") : (0 + " Notifications"))
+        var html = ``
+        JSON.parse(response)?.unreadNotif.forEach(element => {
+          html += `
+        <a href="#" class="dropdown-item">
+                ${element?.nomorRekamMedis}
+              </a>`
+        });
+        $('#item-notif').html(html)
+        if (response.error) {
+          return Swal.fire({
+            icon: 'error',
+            title: "Oops..",
+            text: response?.message ?? "Something went wrong!"
+          })
+        }
+        return Swal.fire({
+          icon: 'success',
+          title: "Success",
+          text: response?.message ?? ""
+        }).then((res) => {
+          window.location = "<?php echo site_url('/sampling/laboratorium') ?>"
+        })
+      },
+      error: function(xhr, status, error) {
+        let res = JSON.parse(xhr.responseText)
+        return Swal.fire({
+          icon: 'error',
+          title: "Oops..",
+          text: res?.message ?? "Something went wrong!"
+        })
+      }
+    });
+  </script>
 </body>
 
 </html>

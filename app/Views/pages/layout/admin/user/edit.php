@@ -48,6 +48,10 @@ $segment = $uri->getSegment(4);
                                                 </select>
                                             </div>
                                             <div class="form-group mb-2">
+                                                <label class="control-label">Username</label>
+                                                <input name="username" id="username" class="form-control" type="text" placeholder="Username" value="<?= esc($userData)['username'] ?>">
+                                            </div>
+                                            <div class="form-group mb-2">
                                                 <label class="control-label">Password</label>
                                                 <input name="password" id="password" class="form-control" type="text" placeholder="Password" value="<?= esc($userData)['password'] ?>">
                                             </div>
