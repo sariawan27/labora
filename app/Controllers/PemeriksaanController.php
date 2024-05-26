@@ -39,6 +39,12 @@ class PemeriksaanController extends BaseController
     }
     public function showPemeriksaan($id = null, $idPasien = null)
     {
+        $pModel = new PemeriksaanModel();
+        $pModel->update($id, [
+            "statusSelesai" => "Pemeriksaan",
+            "updated_at" => date('Y-m-d H:i:s')
+        ]);
+
         $pemeriksaanmModel = new FormPemeriksaan();
         $pemeriksaanData = $pemeriksaanmModel->select('m_formPemeriksaan.id, m_formPemeriksaan.idPemeriksaan, m_formPemeriksaan.idSubPemeriksaan, m_formPemeriksaan.nama, m_formPemeriksaan.satuan, m_formPemeriksaan.normal, m_formPemeriksaan.created_at, t_pemeriksaan.idPasien, t_pemeriksaan.status, t_pemeriksaan.tanggalPemeriksaan, t_pemeriksaan.statusSelesai, t_pemeriksaan.NomorAntrian, t_pemeriksaan.userIdPendaftar, t_pemeriksaan.metode_pembayaran, t_pemeriksaan.totalPembayaran, t_pemeriksaan.updated_at, m_subPemeriksaan.nama as namaSubPemeriksaan, m_subPemeriksaan.harga')->join('t_pemeriksaan', 't_pemeriksaan.id=m_formPemeriksaan.idPemeriksaan')->join('m_subPemeriksaan', 'm_formPemeriksaan.idSubPemeriksaan=m_subPemeriksaan.id')->where('m_formPemeriksaan.idPemeriksaan', $id)->where('t_pemeriksaan.idPasien', $idPasien)->get()->getResultArray();
 

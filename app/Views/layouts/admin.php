@@ -79,7 +79,7 @@ $segment = $uri->getSegment(2);
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?= base_url('admin') ?>" class="nav-link <?= $segment == '' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Dashboard
@@ -88,7 +88,7 @@ $segment = $uri->getSegment(2);
             </li>
             <li class="nav-item">
               <a href="<?= base_url('admin/pendaftar') ?>" class="nav-link <?= $segment == 'pendaftar' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-id-card"></i>
                 <p>
                   Data Pendaftar
                 </p>
@@ -105,7 +105,7 @@ $segment = $uri->getSegment(2);
             </li>
             <li class="nav-item <?= $segment == 'users' ? 'menu-open' : '' ?>">
               <a href="<?= base_url('admin/users') ?>" class="nav-link <?= $segment == 'users' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-user"></i>
                 <p>
                   Data User
                 </p>
@@ -230,7 +230,7 @@ $segment = $uri->getSegment(2);
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url(); ?>/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?= base_url(); ?>/dist/js/pages/dashboard.js"></script>
+  <!-- <script src="<?= base_url(); ?>/dist/js/pages/dashboard.js"></script> -->
 
   <!-- DataTables  & Plugins -->
   <script src="<?= base_url(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>

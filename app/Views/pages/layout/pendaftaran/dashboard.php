@@ -1,4 +1,4 @@
-<?php $this->extend('layouts/admin'); ?>
+<?php $this->extend('layouts/pendaftaran'); ?>
 
 <?php $this->section('content') ?>
 <div class="row">
