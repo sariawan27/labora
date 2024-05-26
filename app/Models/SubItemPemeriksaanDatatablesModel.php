@@ -21,7 +21,7 @@ class SubItemPemeriksaanDatatablesModel extends Model
         $this->db = db_connect();
         $this->request = $request;
         // $this->table = $table;
-        $this->dt = $this->db->table($this->table)->where('idPemeriksaan', $idPemeriksaan);
+        $this->dt = $this->db->table($this->table)->where(["idPemeriksaan" => $idPemeriksaan, "deleted_at IS NULL" => null]);
     }
 
     private function getDatatablesQuery()

@@ -21,8 +21,7 @@ class ItemPemeriksaanDatatablesModel extends Model
         $this->db = db_connect();
         $this->request = $request;
         // $this->table = $table;
-        $this->dt = $this->db->table($this->table);
-
+        $this->dt = $this->db->table($this->table)->where(["deleted_at IS NULL" => null]);
     }
 
     private function getDatatablesQuery()

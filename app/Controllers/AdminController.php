@@ -144,6 +144,39 @@ class AdminController extends BaseController
             return redirect('admin/users')->with('messageError', 'Gagal menyimpan data!');
         }
     }
+
+    public function deleteUser()
+    {
+        try {
+            $userModel = new UserModel();
+
+            $isValid = $this->validate([
+                'id' => 'required',
+            ]);
+
+            if (!$isValid) {
+                return $this->response->setStatusCode(400)->setJson([
+                    'error'     => true,
+                    'message'   => "Data is not valid",
+                    'data'      => $this->validator->getErrors()
+                ]);
+            }
+            $id = $this->request->getVar("id");
+            $doDelete = $userModel->delete($id);
+
+            return $this->response->setStatusCode(200)->setJson([
+                "error"     => false,
+                "message"   => "Successfully delete user",
+                "data"      => $id
+            ]);
+        } catch (Exception $e) {
+            return $this->response->setStatusCode(500)->setJson([
+                "error"     => true,
+                "message"   => $e->getMessage(),
+                "data"      => []
+            ]);
+        }
+    }
     //end user
 
     //item pemeriksaan
@@ -248,6 +281,53 @@ class AdminController extends BaseController
             return redirect('admin/item-pemeriksaan')->with('messageError', 'Gagal mengupdate data!');
         }
     }
+
+    public function deleteItemPemeriksaan()
+    {
+        try {
+            $itemPemeriksaanModel = new ItemPemeriksaanModel();
+            $subItemPemeriksaanModel = new SubItemPemeriksaanModel();
+
+            $isValid = $this->validate([
+                'id' => 'required',
+            ]);
+
+            if (!$isValid) {
+                return $this->response->setStatusCode(400)->setJson([
+                    'error'     => true,
+                    'message'   => "Data is not valid",
+                    'data'      => $this->validator->getErrors()
+                ]);
+            }
+            $id = $this->request->getVar("id");
+            $getData = $subItemPemeriksaanModel->getAll(["idPemeriksaan" => $id]);
+
+            $doDelete = $itemPemeriksaanModel->delete($id);
+
+            if (!empty($getData)) {
+                $mapData = array_map(function ($val) {
+                    $val["deleted_at"] = date("Y-m-d H:i:s");
+                    return $val;
+                }, $getData);
+                $doUpdate = $subItemPemeriksaanModel->updateBatch($mapData, "id");
+            }
+
+            return $this->response->setStatusCode(200)->setJson([
+                "error"     => false,
+                "message"   => "Successfully delete item pemeriksaan",
+                "data"      => [
+                    "doDelete"  => $doDelete,
+                    "doUpdate"  => $doUpdate ?? 0
+                ]
+            ]);
+        } catch (Exception $e) {
+            return $this->response->setStatusCode(500)->setJson([
+                "error"     => true,
+                "message"   => $e->getMessage(),
+                "data"      => []
+            ]);
+        }
+    }
     //end item pemeriksaan
 
     //sub item pemeriksaan
@@ -350,6 +430,38 @@ class AdminController extends BaseController
                 'data' => $data
             ];
             return redirect()->back()->with('messageError', 'Gagal mengupdate data!');
+        }
+    }
+
+    public function deleteSubItemPemeriksaan()
+    {
+        try {
+            $subItemPemeriksaanModel = new SubItemPemeriksaanModel();
+
+            $isValid = $this->validate([
+                'id' => 'required',
+            ]);
+
+            if (!$isValid) {
+                return $this->response->setStatusCode(400)->setJson([
+                    'error'     => true,
+                    'message'   => "Data is not valid",
+                    'data'      => $this->validator->getErrors()
+                ]);
+            }
+            $id = $this->request->getVar("id");
+            $doDelete = $subItemPemeriksaanModel->delete($id);
+            return $this->response->setStatusCode(200)->setJson([
+                "error"     => false,
+                "message"   => "Successfully delete sub item pemeriksaan",
+                "data"      => $doDelete,
+            ]);
+        } catch (Exception $e) {
+            return $this->response->setStatusCode(500)->setJson([
+                "error"     => true,
+                "message"   => $e->getMessage(),
+                "data"      => []
+            ]);
         }
     }
 
