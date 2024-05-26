@@ -97,6 +97,14 @@ $routes->group('pemeriksaan', static function ($routes) {
     $routes->get('hasil-pemeriksaan', 'PemeriksaanController::indexHasilPemeriksaan');
     $routes->get('hasil-pemeriksaan-list', 'PemeriksaanController::hasilPemeriksaanList');
     $routes->get('hasil-pemeriksaan/hasil/(:any)/(:any)', 'PemeriksaanController::showHasilPemeriksaan/$1/$2');
+
+    $routes->get('laboratorium', 'PemeriksaanController::indexPetugas');
+    $routes->get('petugas-list', 'PemeriksaanController::petugasList');
+    $routes->post('petugas-delete', 'PemeriksaanController::petugasDelete');
+    $routes->get('laboratorium/add', 'PemeriksaanController::formPetugasAdd');
+    $routes->post('petugas-add', 'PemeriksaanController::petugasAdd');
+    $routes->get('laboratorium/edit', 'PemeriksaanController::formPetugasEdit');
+    $routes->post('petugas-edit', 'PemeriksaanController::petugasEdit');
 });
 
 $routes->group('validasi', static function ($routes) {

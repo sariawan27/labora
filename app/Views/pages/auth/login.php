@@ -95,6 +95,9 @@ $segment = $uri->getSegment(2);
               <input type="password" name="password" class="form-control input-login" placeholder="Password" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn" style="width: 350px; background-color: rgba(233, 151, 222)">Submit</button>
+            <div class="form-group">
+            <button type="button" class="btn" style="width: 350px; background-color: #e6eaee; margin-top:0.3rem" onclick="return location.href='<?= base_url(); ?>landing'">Kembali</button>
+            </div>
           </form>
         </div>
       </div>

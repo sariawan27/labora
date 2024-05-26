@@ -17,6 +17,7 @@
                             <th>No. RM</th>
                             <th>Status Pembayaran</th>
                             <th>Status Pemeriksaan</th>
+                            <th>Total Bayar</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -105,6 +106,10 @@
                 {
                     data: 'statusSelesai',
                     name: 'statusSelesai'
+                },
+                {
+                    data: 'totalPembayaran',
+                    name: 'totalPembayaran'
                 },
                 {
                     "data": "id", // Tampilkan kolomid_kategori pada table kategori

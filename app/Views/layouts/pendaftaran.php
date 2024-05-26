@@ -310,13 +310,6 @@ $segment = $uri->getSegment(2);
             text: response?.message ?? "Something went wrong!"
           })
         }
-        return Swal.fire({
-          icon: 'success',
-          title: "Success",
-          text: response?.message ?? ""
-        }).then((res) => {
-          window.location = "<?php echo site_url('/sampling/laboratorium') ?>"
-        })
       },
       error: function(xhr, status, error) {
         let res = JSON.parse(xhr.responseText)

@@ -378,7 +378,7 @@ class PendaftaranController extends BaseController
             ->setPunchoutBackground(true);
 
         // Create generic label
-        $label = Label::create('10')
+        $label = Label::create($pemeriksaanData['NomorAntrian'])
             ->setFont(new NotoSans(35))
             ->setTextColor(new Color(0, 0, 0));
 

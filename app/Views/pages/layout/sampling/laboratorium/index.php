@@ -1,4 +1,4 @@
-<?php $this->extend('layouts/sampling'); ?>
+<?php $this->extend('layouts/pemeriksaan'); ?>
 
 <?php $this->section('content') ?>
 
@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="row mb-4">
                     <div class="col-2">
-                        <a class="btn btn-primary" href="/sampling/laboratorium/add">Tambah Petugas</a>
+                        <a class="btn btn-primary" href="/pemeriksaan/laboratorium/add">Tambah Petugas</a>
                     </div>
                 </div>
                 <div class="table-responsive w-100">
@@ -45,7 +45,7 @@
         }).then((r) => {
             if (r.isConfirmed) {
                 $.ajax({
-                    url: "<?php echo site_url('sampling/petugas-delete') ?>",
+                    url: "<?php echo site_url('pemeriksaan/petugas-delete') ?>",
                     data: {
                         id: id
                     },
@@ -83,7 +83,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?php echo site_url('sampling/petugas-list') ?>",
+                "url": "<?php echo site_url('pemeriksaan/petugas-list') ?>",
                 "type": "GET"
             },
             "columnDefs": [{
@@ -115,7 +115,7 @@
                     "render": function(data, type, row, meta) {
                         return `
                             <div class="d-flex align-items-center justify-content-center">
-                                <a href="/sampling/laboratorium/edit?id=${data}" class="fa fa-edit mr-2"></a>
+                                <a href="/pemeriksaan/laboratorium/edit?id=${data}" class="fa fa-edit mr-2"></a>
                                 <a href="javascript:;" class="fa fa-trash text-danger" onclick="onClickDelete('${data}')"></a>
                             </div>
                         `;

@@ -111,6 +111,14 @@ $segment = $uri->getSegment(2);
               </a>
             </li>
             <li class="nav-item">
+              <a href="/pemeriksaan/laboratorium" class="nav-link <?= $segment == 'laboratorium' ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-flask"></i>
+                <p>
+                  Data Laboratorium
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="<?= base_url('pemeriksaan/data-pemeriksaan') ?>" class="nav-link <?= $segment == 'data-pemeriksaan' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-clipboard-list"></i>
                 <p>
@@ -273,13 +281,6 @@ $segment = $uri->getSegment(2);
             text: response?.message ?? "Something went wrong!"
           })
         }
-        return Swal.fire({
-          icon: 'success',
-          title: "Success",
-          text: response?.message ?? ""
-        }).then((res) => {
-          window.location = "<?php echo site_url('/sampling/laboratorium') ?>"
-        })
       },
       error: function(xhr, status, error) {
         let res = JSON.parse(xhr.responseText)
