@@ -21,7 +21,7 @@ class UserDatatablesModel extends Model
         $this->db = db_connect();
         $this->request = $request;
         // $this->table = $table;
-        $this->dt = $this->db->table($this->table)->select('m_user.id, m_user.namaDepan, m_user.namaBelakang, m_user.nomor, m_user.roleId, m_roles.nama ')->join('m_roles', 'm_user.roleId=m_roles.id', 'left');
+        $this->dt = $this->db->table($this->table)->select('m_user.id, m_user.namaDepan, m_user.namaBelakang, m_user.nomor, m_user.roleId, m_roles.nama ')->join('m_roles', 'm_user.roleId=m_roles.id', 'left')->where(["m_user.deleted_at IS NULL" => null]);
     }
 
     private function getDatatablesQuery()

@@ -12,7 +12,7 @@ class SubItemPemeriksaanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'idPemeriksaan', 'nama', 'harga', 'picture', 'deskripsi'];
+    protected $allowedFields    = ['id', 'idPemeriksaan', 'nama', 'harga', 'picture', 'deskripsi', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,4 +43,14 @@ class SubItemPemeriksaanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getAll(array $where = [])
+    {
+        $query = $this->builder();
+        if (!empty($where)) {
+            $query = $query->where($where);
+        }
+        return $query->get()->getResultArray();
+    }
 }
